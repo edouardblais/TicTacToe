@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+}
+
+.maincontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.gameboard {
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: 60vh;
+    height: 60vh;
+} 
+
+.square {
+    width: 20vh;
+    height: 20vh;
+    border: 1px solid black;
+}
+
+.X {
+    background-color: red;
+}
+
+.O {
+    background-color: blue;
+}
