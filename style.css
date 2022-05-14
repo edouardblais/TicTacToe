@@ -1,5 +1,16 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --red: #b91c1c;
+    --pink: #fca5a5;
+    --blue: #0369a1;
+    --paleblue: #bae6fd;
+    --palegreen: #a3e635;
+    --green: #65a30d;
 }
 
 .maincontainer {
@@ -8,27 +19,51 @@
     align-items: center;
     height: 100vh;
     width: 100vw;
+    background-color: var(--green);
 }
 
 .gameboard {
-    border: 1px solid black;
+    border: .5rem solid white;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    width: 60vh;
-    height: 60vh;
+    width: 61.5vh;
+    height: 61.5vh;
 } 
 
 .square {
     width: 20vh;
     height: 20vh;
-    border: 1px solid black;
+    border: .5rem solid white;
+    position: relative;
+    background-color: var(--palegreen) ;
 }
 
 .X {
-    background-color: red;
+    background-color: var(--pink);
+}
+
+.X::after {
+    content: 'X';
+    color: var(--red);
 }
 
 .O {
-    background-color: blue;
+    background-color: var(--paleblue);
 }
+
+.O::after {
+    content: 'O';
+    color: var(--blue);
+}
+
+.X::after, .O::after {
+    font-size: 8rem;
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
