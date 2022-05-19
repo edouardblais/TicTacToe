@@ -11,15 +11,34 @@
     --paleblue: #bae6fd;
     --palegreen: #a3e635;
     --green: #65a30d;
+    --black: #0f172a;
+}
+
+button {
+    background-color: var(--black);
+    padding: .5vh;
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'Roboto Flex', sans-serif;
+    color:white;
 }
 
 .maincontainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     width: 100vw;
     background-color: var(--green);
+}
+
+.announcements {
+    min-height: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .gameboard {
@@ -64,6 +83,24 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.p1wins {
+    color: var(--red)
+}
+
+.p2wins {
+    color: var(--blue);
+}
+
+.draw {
+    color: white;
+}
+
+.p1wins, .p2wins, .draw {
+    font-size: 3rem;
+    font-weight: 900;
+    font-family: 'Roboto Flex', sans-serif;
 }
 
 

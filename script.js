@@ -24,6 +24,8 @@ const Gameflow = (() => {
     const player1 = createPlayer('Player 1', 'X');
     const player2 = createPlayer('Player 2', 'O');
 
+    const announcements = document.querySelector('.announcements');
+
     let activePlayer = player1;
     
     let winningConfigurations = [];
@@ -53,24 +55,31 @@ const Gameflow = (() => {
     function checkWin() {
         updateWinningConfigurations();
         for (let i = 0; i <winningConfigurations.length; i++) {
-            for (let j = 0; j < 3; j++) {
-                if (winningConfigurations[i][0] === 'X' && winningConfigurations[i][1] === 'X' && winningConfigurations[i][2] === 'X') {
-                    console.log('Player 1 wins');
-                    win = true;
-                    resetGame()
-                } else if (winningConfigurations[i][0] === 'O' && winningConfigurations[i][1] === 'O' && winningConfigurations[i][2] === 'O') {
-                    console.log('Player 2 wins');
-                    win = true;
-                    resetGame();
-                };
-            };
-        };
+            if (winningConfigurations[i][0] === 'X' && winningConfigurations[i][1] === 'X' && winningConfigurations[i][2] === 'X') {
+                const p1wins = document.createElement('div');
+                p1wins.textContent = 'Player 1 wins!';
+                p1wins.classList.add('p1wins');
+                announcements.appendChild(p1wins);
+                win = true;
+                playAgain();
+            } else if (winningConfigurations[i][0] === 'O' && winningConfigurations[i][1] === 'O' && winningConfigurations[i][2] === 'O') {
+                const p2wins = document.createElement('div');
+                p2wins.textContent = 'Player 2 wins!';
+                p2wins.classList.add('p2wins');
+                announcements.appendChild(p2wins);
+                win = true;
+                playAgain();
+            }
+        }
     };
 
     function checkIfSquareLeft() {
         if (totalSquares === 0 && win === false) {
-            console.log('Draw!');
-            resetGame();
+            const draw = document.createElement('div');
+            draw.textContent = "It's a draw!";
+            draw.classList.add('draw');
+            announcements.appendChild(draw);
+            playAgain();
         }
     }
 
@@ -81,6 +90,7 @@ const Gameflow = (() => {
             Gameboard.board[index] = '';
             totalSquares = 9;
             win = false;
+            announcements.innerHTML = "";
         })
     }
     
@@ -96,5 +106,13 @@ const Gameflow = (() => {
                 toggleActivePlayer();
             });
         })
+
+    
+    function playAgain() {
+        const playagain = document.createElement('button');
+        playagain.textContent = 'Play again?'
+        announcements.appendChild(playagain);
+        playagain.addEventListener('click', () => resetGame());  
+    };
 
 })();
