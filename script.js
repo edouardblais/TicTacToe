@@ -61,6 +61,7 @@ const Gameflow = (() => {
                 p1wins.classList.add('p1wins');
                 announcements.appendChild(p1wins);
                 win = true;
+                Array.from(gameboard.children).forEach((square) => square.style.pointerEvents = 'none');
                 playAgain();
             } else if (winningConfigurations[i][0] === 'O' && winningConfigurations[i][1] === 'O' && winningConfigurations[i][2] === 'O') {
                 const p2wins = document.createElement('div');
@@ -68,6 +69,7 @@ const Gameflow = (() => {
                 p2wins.classList.add('p2wins');
                 announcements.appendChild(p2wins);
                 win = true;
+                Array.from(gameboard.children).forEach((square) => square.style.pointerEvents = 'none');
                 playAgain();
             }
         }
@@ -91,6 +93,7 @@ const Gameflow = (() => {
             totalSquares = 9;
             win = false;
             announcements.innerHTML = "";
+            square.style.pointerEvents = 'auto';
         })
     }
     
@@ -101,11 +104,13 @@ const Gameflow = (() => {
                 square.classList.add(activePlayer.symbol);
                 Gameboard.board[index] = activePlayer.symbol;
                 totalSquares = totalSquares - 1;
+                square.style.pointerEvents = 'none';
                 checkWin();
                 checkIfSquareLeft();
                 toggleActivePlayer();
             });
-        })
+        }
+    )
 
     
     function playAgain() {
